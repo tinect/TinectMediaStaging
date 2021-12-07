@@ -1,0 +1,40 @@
+{
+  "name": "tinect/media-staging",
+  "description": "Some plugin description",
+  "type": "shopware-platform-plugin",
+  "version": "1.0.0",
+  "authors": [
+    {
+      "name": "Tinect"
+    }
+  ],
+  "require": {
+    "shopware/core": "~6.4"
+  },
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "Tinect\\MediaStaging\\": "src/"
+    }
+  },
+  "extra": {
+    "shopware-plugin-class": "Tinect\\MediaStaging\\TinectMediaStaging",
+    "copyright": "Tinect",
+    "label": {
+      "de-DE": "TinectMediaStaging",
+      "en-GB": "TinectMediaStaging"
+    },
+    "description": {
+      "de-DE": "Some plugin description",
+      "en-GB": "Some plugin description"
+    },
+    "manufacturerLink": {
+      "de-DE": "https://acme.org",
+      "en-GB": "https://acme.org"
+    },
+    "supportLink": {
+      "de-DE": "https://acme.org",
+      "en-GB": "https://acme.org"
+    }
+  }
+}

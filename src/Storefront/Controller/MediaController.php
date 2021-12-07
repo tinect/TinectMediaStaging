@@ -43,7 +43,7 @@ class MediaController extends StorefrontController
             return new RedirectResponse($this->getUrlWithQueryString($this->package->getUrl($wildcard), $queryString));
         }
 
-        $url = rtrim($this->systemConfigService->get('TinectMediaStaging.config.liveurl'), '/');
+        $url = rtrim($this->systemConfigService->get('TinectMediaStaging.config.liveurl'), '/') . '/';
         return new RedirectResponse($this->getUrlWithQueryString($url . $wildcard, $queryString));
     }
 

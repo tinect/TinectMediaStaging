@@ -12,7 +12,7 @@ class TinectMediaStaging extends Plugin
         parent::build($container);
 
         if (!$container->hasParameter('shopware.filesystem.public.url')) {
-            $defaultUrl = getenv('APP_URL');
+            $defaultUrl = $_SERVER['APP_URL'] ?? 'http://localhost';
             $container->setParameter('shopware.filesystem.public.url', rtrim($defaultUrl, '/') . '/mediaproxy/');
         }
     }

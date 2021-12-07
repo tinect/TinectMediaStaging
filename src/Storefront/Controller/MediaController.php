@@ -38,13 +38,13 @@ class MediaController extends StorefrontController
     public function mediaproxy(string $wildcard, Request $request, SalesChannelContext $context): RedirectResponse
     {
         $queryString = $request->getQueryString();
+        $url = explode('/mediaproxy', $request->getUri())[0];
 
-        if ($this->filesystem->has($wildcard)) {
-            return new RedirectResponse($this->getUrlWithQueryString($this->package->getUrl($wildcard), $queryString));
+        if (!$this->filesystem->has($wildcard)) {
+            $url = rtrim($this->systemConfigService->get('TinectMediaStaging.config.liveurl'), '/');
         }
 
-        $url = rtrim($this->systemConfigService->get('TinectMediaStaging.config.liveurl'), '/') . '/';
-        return new RedirectResponse($this->getUrlWithQueryString($url . $wildcard, $queryString));
+        return new RedirectResponse($this->getUrlWithQueryString($url . '/' . $wildcard, $queryString));
     }
 
     private function getUrlWithQueryString(string $url, ?string $queryString): string

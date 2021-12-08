@@ -7,7 +7,6 @@ use Shopware\Core\Framework\Routing\Annotation\RouteScope;
 use Shopware\Core\System\SalesChannel\SalesChannelContext;
 use Shopware\Core\System\SystemConfig\SystemConfigService;
 use Shopware\Storefront\Controller\StorefrontController;
-use Symfony\Component\Asset\PackageInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -18,17 +17,13 @@ use Symfony\Component\Routing\Annotation\Route;
 class MediaController extends StorefrontController
 {
     private FilesystemInterface $filesystem;
-    private PackageInterface $package;
     private SystemConfigService $systemConfigService;
 
     public function __construct(
         FilesystemInterface $filesystem,
-        PackageInterface $package,
         SystemConfigService $systemConfigService
-    )
-    {
+    ) {
         $this->filesystem = $filesystem;
-        $this->package = $package;
         $this->systemConfigService = $systemConfigService;
     }
 
@@ -41,7 +36,7 @@ class MediaController extends StorefrontController
         $url = explode('/mediaproxy', $request->getUri())[0];
 
         if (!$this->filesystem->has($wildcard)) {
-            $url = rtrim($this->systemConfigService->get('TinectMediaStaging.config.liveurl'), '/');
+            $url = rtrim($this->systemConfigService->getString('TinectMediaStaging.config.liveurl'), '/');
         }
 
         return new RedirectResponse($this->getUrlWithQueryString($url . '/' . $wildcard, $queryString));
@@ -55,5 +50,4 @@ class MediaController extends StorefrontController
 
         return $url . '?' . $queryString;
     }
-
 }

@@ -7,7 +7,6 @@
     <services>
         <service id="Tinect\MediaStaging\Storefront\Controller\MediaController" public="true">
             <argument type="service" id="shopware.filesystem.public"/>
-            <argument type="service" id="shopware.asset.public"/>
             <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService"/>
             <call method="setContainer">
                 <argument type="service" id="service_container"/>

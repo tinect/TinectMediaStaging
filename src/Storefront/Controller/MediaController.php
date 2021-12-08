@@ -25,8 +25,7 @@ class MediaController extends StorefrontController
         FilesystemInterface $filesystem,
         PackageInterface $package,
         SystemConfigService $systemConfigService
-    )
-    {
+    ) {
         $this->filesystem = $filesystem;
         $this->package = $package;
         $this->systemConfigService = $systemConfigService;
@@ -55,5 +54,4 @@ class MediaController extends StorefrontController
 
         return $url . '?' . $queryString;
     }
-
 }

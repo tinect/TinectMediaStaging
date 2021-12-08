@@ -1,0 +1,13 @@
+name: DeployPlugin
+on:
+    push:
+        branches:
+            - main
+
+jobs:
+    build:
+        uses: FriendsOfShopware/workflows/.github/workflows/plugin-github-deploy.yml@develop
+        with:
+            PLUGIN_NAME: FroshPlatformThumbnailProcessor
+        secrets:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

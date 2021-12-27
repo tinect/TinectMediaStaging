@@ -1,1 +1,1 @@
-This is just a POC to add ability to use remote and foreign media in staging or local test
+This plugin for shopware 6 introduced a own controller for requesting images from production shop without having to download them into the staging system
